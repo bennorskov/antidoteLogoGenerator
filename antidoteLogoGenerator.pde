@@ -11,11 +11,13 @@ void setup() {
   size(800, 400);
 
   //////// ///// (number of Points, color, thickness(min,max), right most point, waviness, speed, curveOffset)
-  duskyYellow =new DreamSwoosh(40, #f5c102, new PVector(2, 15), new PVector(640, 200), 2, .001, 200); 
-  red =        new DreamSwoosh(20, #f25847, new PVector(8, 9), new PVector(740, 200), 8, .01, 100); 
-  perriwinkle =new DreamSwoosh(20, #4d91c9, new PVector(5, 10), new PVector(540, 200), 3, .01, 40 );
-  purple =     new DreamSwoosh(14, #8557ac, new PVector(10, 11), new PVector(350, 130), .3, .006, 200 );
-  green =      new DreamSwoosh(30, #00926c, new PVector(4, 20), new PVector(700, 200), 4, .005, 300 );
+  duskyYellow =new DreamSwoosh(40, #f5c102, new PVector(12, 14), new PVector(725, 200), 2, .001, 200); 
+  red =        new DreamSwoosh(50, #f25847, new PVector(4, 9), new PVector(600, 200), 3, .00001, 100); 
+  perriwinkle =new DreamSwoosh(10, #4d91c9, new PVector(8, 10), new PVector(625, 200), 3, .0005, 240 );
+  purple =     new DreamSwoosh(14, #8557ac, new PVector(6, 11), new PVector(525, 130), 1, .0006, 200 );
+  green =      new DreamSwoosh(30, #00926c, new PVector(4, 8), new PVector(775, 200), 4, .0005, 100 );
+  
+  red.isDotted = true;
 
   //////// //////// //////// //////// Styles
   smooth();
@@ -32,7 +34,7 @@ void draw() {
     // Recording will say "textMode(SHAPE) is not supported by this renderer." but it doesn't affect the output
     // files are placed in the sketch folder
   }
-  
+
   background(#FFFfff);
   noStroke();
   duskyYellow.draw();
@@ -40,13 +42,13 @@ void draw() {
   perriwinkle.draw();
   purple.draw();
   green.draw();
-
+  
   pushMatrix();
   scale(2);
   translate(0, 50);
   shape(logoText, 0, 0);
   popMatrix();
-  
+
   if (saveSVG) {
     saveSVG = false;
     endRecord();
