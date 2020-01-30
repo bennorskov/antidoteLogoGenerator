@@ -14,7 +14,7 @@ void setup() {
   duskyYellow =new DreamSwoosh(40, #f5c102, new PVector(2, 15), new PVector(640, 200), 2, .001, 200); 
   red =        new DreamSwoosh(20, #f25847, new PVector(8, 9), new PVector(740, 200), 8, .01, 100); 
   perriwinkle =new DreamSwoosh(20, #4d91c9, new PVector(5, 10), new PVector(540, 200), 3, .01, 40 );
-  purple =     new DreamSwoosh(10, #8557ac, new PVector(2, 30), new PVector(350, 200), .3, .003, 100 );
+  purple =     new DreamSwoosh(14, #8557ac, new PVector(10, 11), new PVector(350, 130), .3, .006, 200 );
   green =      new DreamSwoosh(30, #00926c, new PVector(4, 20), new PVector(700, 200), 4, .005, 300 );
 
   //////// //////// //////// //////// Styles
