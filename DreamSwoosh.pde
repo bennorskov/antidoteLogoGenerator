@@ -32,7 +32,7 @@ class DreamSwoosh {
     /* each swoosh starts at the not same place in the noise field. 
      * They would have the exact same curve without this code
      * We can start them exactly the same here for more parallel movement. */
-    noiseRandomOffset = random(100);
+    noiseRandomOffset = 0;// random(100);
 
     noiseRange = _noiseRange; // how granular or not the noise field is
     noiseSpeed = _spd; // how fast to traverse the noise field
