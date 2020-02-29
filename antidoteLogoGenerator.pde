@@ -5,26 +5,18 @@ boolean doAnimation = true;
 boolean saveSVG = false; // press space to save one frame
 
 //////// //////// //////// //////// Build Dream Swooshes 
-DreamSwoosh duskyYellow, red, perriwinkle, purple, green;
+DreamSwoosh yellow, red, blue, purple, green;
 
 void setup() {
   size(800, 400);
 
   // see Detailed Explanation at the bottom of this file
   // (number of Points, color, thickness(min,max), right most point, waviness, speed, curveOffset, [dotted Gap], [dotted Length])
-  duskyYellow =new DreamSwoosh(40, #f5c102, new PVector(12, 14),new PVector(725, 200), 6, .001,   200); 
+  yellow =new DreamSwoosh(40, #f5c102, new PVector(12, 14),new PVector(725, 200), 6, .001,   200); 
   red =        new DreamSwoosh(200,#f25847, new PVector(9, 9),  new PVector(600, 200), 1, .00001, 300, 1, 25); 
-  perriwinkle =new DreamSwoosh(10, #4d91c9, new PVector(8, 10), new PVector(625, 200), 3, .0005,  240 );
+  blue =new DreamSwoosh(10, #4d91c9, new PVector(8, 10), new PVector(625, 200), 3, .0005,  240 );
   purple =     new DreamSwoosh(14, #8557ac, new PVector(6, 11), new PVector(525, 130), 1, .0006,  200 );
-  green =      new DreamSwoosh(30, #00926c, new PVector(4, 8),  new PVector(775, 200), 4, .0005,  100 );
-
-  float noiseOffsetAmount = .000002;
-  duskyYellow.noiseRandomOffset = 0;//noiseOffsetAmount+=noiseOffsetAmount;
-  red.noiseRandomOffset = 0;//noiseOffsetAmount+=noiseOffsetAmount;
-  perriwinkle.noiseRandomOffset = 0;//noiseOffsetAmount+=noiseOffsetAmount;
-  purple.noiseRandomOffset = 0;//noiseOffsetAmount+=noiseOffsetAmount;
-  green.noiseRandomOffset = 0;//noiseOffsetAmount+=noiseOffsetAmount;
-  
+  green =      new DreamSwoosh(30, #00926c, new PVector(4, 8),  new PVector(775, 200), 4, .0005,  100 );  
 
   //////// //////// //////// //////// Styles
   smooth();
@@ -45,9 +37,9 @@ void draw() {
   noStroke();
   
   // —————————— —————————— —————————— Drawing Order. First things drawn are at the back. 
-  duskyYellow.draw();
+  yellow.draw();
   red.draw();
-  perriwinkle.draw();
+  blue.draw();
   purple.draw();
   green.draw();
   

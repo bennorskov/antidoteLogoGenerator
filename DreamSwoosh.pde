@@ -15,6 +15,8 @@ class DreamSwoosh {
   boolean isDotted = false;
   int dottedGap = 1;
   int dottedLength = 1;
+  
+  boolean isLooping = false;
 
   DreamSwoosh (int _res, color _c, PVector _T, PVector _eP, float _noiseRange, float _spd, float _curveH) {
     // end points setup
@@ -45,6 +47,12 @@ class DreamSwoosh {
     // starting point is smaller
     thickness[resolution - 1] = _T.x;
   }
+  // Create a dreamSwoosh that loops
+  DreamSwoosh(int _res, color _c, PVector _T, PVector _eP, float _noiseRange, float _spd, float _curveH, boolean _loop) {
+    this(_res, _c, _T, _eP, _noiseRange, _spd, _curveH);
+    isLooping = _loop;
+  }
+  // Create a dreamSwoosh with a dotted line
   DreamSwoosh(int _res, color _c, PVector _T, PVector _eP, float _noiseRange, float _spd, float _curveH, int _dGap, int _dLength) {
     this(_res, _c, _T, _eP, _noiseRange, _spd, _curveH);
     convertToDotted(_dGap, _dLength, _T);
@@ -61,7 +69,7 @@ class DreamSwoosh {
       PVector[] points = new PVector[resolution]; // used to draw bottoms of swooshes
       for (int i = 0; i<resolution; i++) {
         float percent = float(i)/float(resolution);
-        float noiseX = noiseRange * percent + noiseRandomOffset + currentNoiseStep;
+        float noiseX = (!isLooping) ? noiseRange * percent + noiseRandomOffset + currentNoiseStep : noiseRange * percent * sin(currentNoiseStep) + noiseRandomOffset;
         PVector p = new PVector(startP.x + dist.x * percent, startP.y + noise(noiseX) * curveHeightOffset - curveHeightOffset*.5);
         points[i] = p;
         curveVertex(p.x, p.y - thickness[i]*.5);
