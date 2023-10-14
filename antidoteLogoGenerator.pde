@@ -4,12 +4,17 @@ PShape logoText;
 boolean doAnimation = true;
 boolean saveSVG = false; // press space to save one frame
 
+boolean runInFullscreen = true; // can't put the fullscreen call in a conditional, so have to change that manually
+// there's definitely another way of doing this
+boolean isBlackBackground = false;
+
 //////// //////// //////// //////// Build Dream Swooshes 
 DreamSwoosh yellow, red, blue, purple, green;
-
 void setup() {
+  //if (runInFullscreen) {
+     fullScreen();
+  //}
   size(800, 400);
-
   // see Detailed Explanation at the bottom of this file
   // (number of Points, color, thickness(min,max), right most point, waviness, speed, curveOffset, [dotted Gap], [dotted Length])
   yellow =new DreamSwoosh(40, #f5c102, new PVector(12, 14),new PVector(725, 200), 6, .001,   200); 
@@ -22,18 +27,28 @@ void setup() {
   smooth();
   noStroke();
 
-  logoText = loadShape("logoText.svg");
+  logoText = (isBlackBackground) ? loadShape("logoText_w.svg") : loadShape("logoText.svg");
   if (!doAnimation) {
     noLoop();
   }
+  
 }
 void draw() {
+  if (runInFullscreen) {
+    pushMatrix();
+    scale(1.75);
+    translate(0, 80);
+  }
   if (saveSVG) {
     beginRecord(SVG, "logoExportFile-####.svg");
     // Recording will say "textMode(SHAPE) is not supported by this renderer." but it doesn't affect the output
     // files are placed in the sketch folder
   }
-  background(#FFFfff);
+  if (isBlackBackground) { 
+    background(#1f1f1f); 
+  } else {
+    background(#ffffff);
+  }
   noStroke();
   
   // —————————— —————————— —————————— Drawing Order. First things drawn are at the back. 
@@ -49,6 +64,8 @@ void draw() {
   translate(0, 50);
   shape(logoText, 0, 0);
   popMatrix();
+  
+  if (runInFullscreen) popMatrix();
 
   if (saveSVG) {
     saveSVG = false;
